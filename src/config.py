@@ -1,0 +1,2 @@
+SOURCE = "./static"
+DESTINATION = "./public"
