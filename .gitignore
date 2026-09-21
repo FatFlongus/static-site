@@ -6,6 +6,9 @@ __pycache__/
 # C extensions
 *.so
 
+#Project folders
+public/
+
 # Distribution / packaging
 .Python
 build/
@@ -37,6 +40,7 @@ pip-log.txt
 pip-delete-this-directory.txt
 
 # Unit test / coverage reports
+test_
 htmlcov/
 .tox/
 .nox/
