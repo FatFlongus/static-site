@@ -1,14 +1,17 @@
 from copy import copy
-import os, shutil
+import os, shutil, sys
 
 from config import SOURCE, DESTINATION
 from textnode import TextNode, TextType
 from block_markdown import markdown_to_html_node, extract_title
 
 dir_path_static = "./static"
-dir_path_public = "./public"
+dir_path_public = "./docs"
 dir_path_content = "./content"
 template_path = "./template.html"
+basepath = sys.argv
+if len(basepath) == 0:
+    basepath = "/"
 
 def main():
     static_to_public()
@@ -51,6 +54,8 @@ def generate_page(from_path, template_path, dest_path):
     html_title = extract_title(markdown_file)
     final_file = temp_file.replace("{{ Title }}", f"{html_title}",)
     final_file = final_file.replace("{{ Content }}", f"{html_file}")
+    final_file = final_file.replace('href="/', f'href="{basepath}')
+    final_file = final_file.replace('src="/', f'src="{basepath}')
     dest_dir_path = os.path.dirname(dest_path)
     if dest_dir_path != "":
         os.makedirs(dest_dir_path, exist_ok=True)

@@ -1,2 +1,2 @@
 SOURCE = "./static"
-DESTINATION = "./public"
+DESTINATION = "./docs"
